@@ -39,14 +39,14 @@ print(f"Glucose Level: {glucose_mg_dl} mg/dL, Category: {category}")
 ## Patient Triage Score Calculator
 
 ```python
-resp_rate: int = 32
+respiratory_rate: int = 32
 heart_rate: int = 125
 temp_c: float = 39.5
 age: int = 70
 
 score: int = 0
 
-if resp_rate > 30:
+if respiratory_rate > 30:
     score += 2
 if heart_rate > 120:
     score += 2
