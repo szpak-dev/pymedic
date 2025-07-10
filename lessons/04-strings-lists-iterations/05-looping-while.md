@@ -1,4 +1,4 @@
-# hapter 5: Looping with `while ..`
+# Chapter 5: Looping with `while ..`
 
 `while` loops continue executing as long as a condition remains true, making them ideal for situations where you need more control than a `for` loop provides.
 
@@ -13,11 +13,11 @@ while condition:
 **Example 1:** String iteration with counter
 
 ```python
-text = "Python"
-index = 0  # Initialize counter
+text: str = 'Python'
+index: int = 0  # Initialize counter
 
 while index < len(text):
-    print(f"Character at position {index}: {text[index]}")
+    print(f'Character at position {index}: {text[index]}')
     index += 1  # Increment counter
 
 # Output:
@@ -32,13 +32,13 @@ while index < len(text):
 **Example 2:** List iteration with condition
 
 ```python
-numbers = [10, 20, 30, 40, 50]
-total = 0
-i = 0
+numbers: list[int] = [10, 20, 30, 40, 50]
+total: int = 0
+i: int = 0
 
 while i < len(numbers) and total < 100:
     total += numbers[i]
-    print(f"Added {numbers[i]}, current total: {total}")
+    print(f'Added {numbers[i]}, current total: {total}')
     i += 1
 
 # Output:
@@ -53,15 +53,15 @@ while i < len(numbers) and total < 100:
 **Pattern 1:** Finding an element
 
 ```python
-fruits = ["apple", "banana", "cherry", "date"]
-target = "cherry"
-found = False
-position = 0
+fruits: list[str] = ['apple', 'banana', 'cherry', 'date']
+target: str = 'cherry'
+found: bool = False
+position: int = 0
 
 while position < len(fruits) and not found:
     if fruits[position] == target:
         found = True
-        print(f"Found {target} at index {position}")
+        print(f'Found {target} at index {position}')
     position += 1
 
 # Output: Found cherry at index 2
@@ -70,16 +70,16 @@ while position < len(fruits) and not found:
 **Pattern 1:** Building a new sequence
 
 ```python
-original = "Hello123"
-filtered = ""
-i = 0
+original: str = 'Hello123'
+filtered: str = ''
+i: int = 0
 
 while i < len(original):
     if original[i].isalpha():
         filtered += original[i].upper()
     i += 1
 
-print(filtered)  # Output: HELLO
+print(filtered)
 ```
 
 ## Practical Applications
@@ -87,42 +87,43 @@ print(filtered)  # Output: HELLO
 **Example 1:** Password retry system
 
 ```python
-max_attempts = 3
-attempts = 0
-correct_password = "Python123"
-access_granted = False
+max_attempts: int = 3
+attempts: int = 0
+correct_password: str = 'Python123'
+access_granted: bool = False
 
 while attempts < max_attempts and not access_granted:
-    password = input("Enter password: ")
+    password = input('Enter password: ')
     if password == correct_password:
         access_granted = True
-        print("Access granted!")
+        print('Access granted!')
     else:
         attempts += 1
         remaining = max_attempts - attempts
-        print(f"Wrong password. {remaining} attempts remaining.")
+        print(f'Wrong password. {remaining} attempts remaining.')
 
 if not access_granted:
-    print("Account locked. Too many failed attempts.")
+    print('Account locked. Too many failed attempts.')
 ```
 
 **Pattern 2:** Processing until sentinel value
 
 ```python
-numbers = []
-print("Enter numbers (type 'done' to finish):")
+numbers: list[int] = []
+print('Enter numbers (type 'done' to finish):')
 
 while True:
-    user_input = input("> ")
+    user_input = input('> ')
     if user_input.lower() == 'done':
         break
+
     try:
         numbers.append(float(user_input))
     except ValueError:
-        print("Please enter a number or 'done'")
+        print('Please enter a number or 'done'')
 
-print(f"You entered: {numbers}")
-print(f"Sum: {sum(numbers)}")
+print(f'You entered: {numbers}')
+print(f'Sum: {sum(numbers)}')
 ```
 
 ## Differences from `for` Loops
@@ -142,7 +143,7 @@ for i in range(5):
     print(i)
 
 # While equivalent (requires manual counter)
-i = 0
+i: int = 0
 while i < 5:
     print(i)
     i += 1
@@ -167,8 +168,8 @@ while condition:
 **Example:** List modification
 
 ```python
-data = [1, 2, 3, "a", 4, 5, "b", 6]
-i = 0
+data: list[int] = [1, 2, 3, 'a', 4, 5, 'b', 6]
+i: int = 0
 
 while i < len(data):
     if not isinstance(data[i], int):
@@ -197,7 +198,7 @@ Loop through a string using `while` and print each character until the first spa
 **Input Example:**
 
 ```python
-text = "Hello World"
+text: str = 'Hello World'
 ```
 
 **Expected Output:**
@@ -218,7 +219,7 @@ Loop using `while` to count how many numeric characters are in the string.
 **Input Example:**
 
 ```python
-s = "a1b2c3"
+string: str = 'a1b2c3'
 ```
 
 **Expected Output:**
@@ -235,13 +236,13 @@ Use `while` loop to reverse a string (don’t use slicing or `reversed()`).
 **Input Example:**
 
 ```python
-text = "python"
+text: str = 'python'
 ```
 
 **Expected Output:**
 
 ```python
-"nohtyp"
+'nohtyp'
 ```
 
 ### Task 4: Sum All Elements
