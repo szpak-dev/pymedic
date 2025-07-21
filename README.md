@@ -17,3 +17,4 @@ Here is the lessons plan:
 - [Lesson 4: Strings, Lists and Iterations](lessons/04-strings-lists-iterations/index.md)
 - [Lesson 5: Conditionals and Logic](lessons/05-tuples-dictionaries-conditionals/index.md)
 - [Lesson 6: Functions](lessons/06-functions/index.md)
+- [Lesson 7: Files](lessons/07-files/index.md)
