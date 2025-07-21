@@ -14,6 +14,7 @@ for value, expected_result in test_cases.items():
     result = is_even(value) == expected_result
     results.append(result)
 
+
 if all(results):
     print('OK')
 else:
