@@ -25,7 +25,7 @@ Create a command-line interface (CLI) program in Python that allows staff at a m
    * Date of birth (YYYY-MM-DD)
    * Gender (M/F/Other)
    * Phone number (validated)
-   * Email address (optional)
+   * Email address (optional, validated)
    * Insurance status (boolean)
 
 3. **Persistence**:
