@@ -92,8 +92,7 @@ Using `with` is recommended, but you can manually open and close files too.
 ```python
 file = open('manual.txt', 'w')
 try:
-    file.write("Manual file management
-")
+    file.write("Manual file management")
 finally:
     file.close()
 ```
