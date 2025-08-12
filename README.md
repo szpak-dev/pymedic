@@ -18,3 +18,4 @@ Here is the lessons plan:
 - [Lesson 5: Conditionals and Logic](lessons/05-tuples-dictionaries-conditionals/index.md)
 - [Lesson 6: Functions](lessons/06-functions/index.md)
 - [Lesson 7: Files](lessons/07-files/index.md)
+- [Lesson 8: Classes](lessons/08-classes/index.md)
