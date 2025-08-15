@@ -1,5 +1,10 @@
-patient_list = [{'First Name: ': 'John', 'Last Name: ': 'Doe', 'Date of Birth (YYYY-MM-DD): ': '1985-04-12', 'Gender (M/F/Other): ': 'M', 'Phone Number: ': '+48123456789', 'Email (optional): ': 'john.doe@example.com', 'Insurance (yes/no): ': 'yes', 'id': 'P00001'},
-              {'First Name: ': 'Jon', 'Last Name: ': 'Doe', 'Date of Birth (YYYY-MM-DD): ': '1990-03-01', 'Gender (M/F/Other): ': 'M', 'Phone Number: ': '+48123456789', 'Email (optional): ': 'john.doe@example.com', 'Insurance (yes/no): ': 'no', 'id': 'P00002'}]
+import json
+
+with open('json.json', 'r') as file:
+    patient_list = json.load(file)
+
+#patient_list = [{'First Name': 'John', 'Last Name': 'Doe', 'Date of Birth (YYYY-MM-DD)': '1985-04-12', 'Gender (M/F/Other)': 'M', 'Phone Number': '+48123456789', 'Email (optional)': 'john.doe@example.com', 'Insurance (yes/no)': 'yes', 'id': 'P00001'},
+#              {'First Name': 'Jon', 'Last Name': 'Doe', 'Date of Birth (YYYY-MM-DD)': '1990-03-01', 'Gender (M/F/Other)': 'M', 'Phone Number': '+48123456789', 'Email (optional)': 'john.doe@example.com', 'Insurance (yes/no)': 'no', 'id': 'P00002'}]
 
 
 def patient_list_menu():
@@ -41,11 +46,11 @@ def delete_patient ():
     pass
 
 def register_new_patient():
-    new_patient_dict = {'First Name: ': '', 'Last Name: ': '', 'Date of Birth (YYYY-MM-DD): ': '', 'Gender (M/F/Other): ': '', 'Phone Number: ': '', 'Email (optional): ': '', 'Insurance (yes/no): ': ''}
+    new_patient_dict = {'First Name': '', 'Last Name': '', 'Date of Birth (YYYY-MM-DD)': '', 'Gender (M/F/Other)': '', 'Phone Number': '', 'Email (optional)': '', 'Insurance (yes/no)': ''}
     for key in new_patient_dict:
         
         while True:
-            value = input('Podaj - ' + key)
+            value = input('Podaj - ' + key +': ')
 
             if not value:
                 if 'optional' in key.lower():
@@ -79,16 +84,20 @@ def register_new_patient():
     is_duplicated = False
 
     for i in patient_list:
-            if new_patient_dict['First Name: '] == i['First Name: '] and new_patient_dict['Last Name: '] == i['Last Name: '] and new_patient_dict['Date of Birth (YYYY-MM-DD): '] == i['Date of Birth (YYYY-MM-DD): ']:
+            if new_patient_dict['First Name'] == i['First Name'] and new_patient_dict['Last Name'] == i['Last Name'] and new_patient_dict['Date of Birth (YYYY-MM-DD)'] == i['Date of Birth (YYYY-MM-DD)']:
                 is_duplicated = True
             else:
                 is_duplicated = False
 
     if not is_duplicated:
         patient_list.append(new_patient_dict)
+        with open('json.json', 'r+') as file:
+            file.seek(0)
+            json.dump(patient_list, file, indent=2)
+            file.truncate()
         print('Patient successfully added to the list.')
     else:
-        print('Patient duplicated')
+        print('Can not add duplicated patient to the database.')
 
                 
 
@@ -107,3 +116,5 @@ while True:
     if choice_main == '1': patient_list_menu()
     if choice_main == '2': register_new_patient()
     if choice_main == '4': break
+
+    
