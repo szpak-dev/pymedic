@@ -1,0 +1,32 @@
+[
+  {
+    "First Name": "John",
+    "Last Name": "Doe",
+    "Date of Birth (YYYY-MM-DD)": "1980-03-03",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "444333222",
+    "Email (optional)": "john@gmail.com",
+    "Insurance (yes/no)": "yes",
+    "id": "10020"
+  },
+  {
+    "First Name": "Lukasz",
+    "Last Name": "Mackiewicz",
+    "Date of Birth (YYYY-MM-DD)": "1990-03-01",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "793399278",
+    "Email (optional)": "lumackiewicz@gmail.com",
+    "Insurance (yes/no)": "yes",
+    "id": "10021"
+  },
+  {
+    "First Name": "Magdalena",
+    "Last Name": "Mackiewicz",
+    "Date of Birth (YYYY-MM-DD)": "1987-10-12",
+    "Gender (M/F/Other)": "F",
+    "Phone Number": "668110815",
+    "Email (optional)": "",
+    "Insurance (yes/no)": "yes",
+    "id": "10022"
+  }
+]
