@@ -1,4 +1,5 @@
 from classes import Car
 
-print('__name__: ', __name__)
 
+ford_bronco = Car('Ford', 'Bronco')
+ford_fiesta = Car.new_ford('Fiesta')

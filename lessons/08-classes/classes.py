@@ -9,9 +9,14 @@ class Car:
         self.is_driving = False
 
     def drive(self):
-        print(f'{self.brand}, model {self.model} is DRIVING!')
+        print('Printed from instance: ', self)
+        # print(f'{self.brand}, model {self.model} is DRIVING!')
 
     def stop_driving(self):
         self.is_driving = False
         print(f'{self.brand}, model {self.model} is STOPPED!')
 
+    @classmethod
+    def new_ford(cls, model: str) -> "Car":
+        print('Printed from classmethod: ', cls)
+        return Car('Ford', model)
