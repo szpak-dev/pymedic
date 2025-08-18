@@ -20,6 +20,7 @@ while True:
 
     if choice_main == '1': patient_list_menu()
     if choice_main == '2': register_new_patient()
+    if choice_main == '3': continue
     if choice_main == '4': break
 
     
