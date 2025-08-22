@@ -10,5 +10,6 @@ def make_table(list_of_dictionaries):
         header_with_number = ["Nr"]
         header_with_number.extend(list_of_dictionaries[0].keys())
         print(tabulate.tabulate(rows, header_with_number))
+        return(rows)
     else:
         print('Table empty. No patient in the database.')

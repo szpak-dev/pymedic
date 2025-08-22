@@ -5,8 +5,6 @@ from mc_data import patient_list
 from mc_generate_id import generate_id
 from mc_patient_list_menu import patient_list_menu
 from mc_new_patient import register_new_patient
-from mc_search import search
-from mc_delete import delete_patient
 
                 
 while True:
@@ -22,5 +20,6 @@ while True:
     if choice_main == '2': register_new_patient()
     if choice_main == '3': continue
     if choice_main == '4': break
+
 
     
