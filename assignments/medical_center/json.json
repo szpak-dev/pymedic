@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "First Name": "Lukasz",
+    "Last Name": "Lukasz",
+    "Date of Birth (YYYY-MM-DD)": "01-01-0111",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "222111333",
+    "Email (optional)": "",
+    "Insurance (yes/no)": "yes",
+    "id": "10024"
+  },
+  {
+    "First Name": "Jan",
+    "Last Name": "Kowalski",
+    "Date of Birth (YYYY-MM-DD)": "2000-03-02",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "888999000",
+    "Email (optional)": "",
+    "Insurance (yes/no)": "yes",
+    "id": "10028"
+  },
+  {
+    "First Name": "Adam",
+    "Last Name": "Malysz",
+    "Date of Birth (YYYY-MM-DD)": "1975-05-02",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "888333777",
+    "Email (optional)": "",
+    "Insurance (yes/no)": "yes",
+    "id": "10029"
+  },
+  {
+    "First Name": "Lukasz",
+    "Last Name": "Mackieiwcz",
+    "Date of Birth (YYYY-MM-DD)": "1990-03-01",
+    "Gender (M/F/Other)": "M",
+    "Phone Number": "888333999",
+    "Email (optional)": "",
+    "Insurance (yes/no)": "yes",
+    "id": "10030"
+  }
+]

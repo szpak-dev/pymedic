@@ -1,10 +1,8 @@
 import json
 
-from mc_data import patient_list
+from mc_data import patient_list, register_new_patient
 
-from mc_generate_id import generate_id
 from mc_patient_list_menu import patient_list_menu
-from mc_new_patient import register_new_patient
 
                 
 while True:
