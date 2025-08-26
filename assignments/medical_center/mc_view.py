@@ -13,6 +13,10 @@ def _is_valid_email(email: str) -> bool:
     return '@' in email
 
 
+def _assert_valid_email(email: str):
+    assert _is_valid_email(email), 'Invalid email'
+
+
 def _is_valid_phone(phone: str) -> bool:
     return phone.isdigit() and len(phone) == 9
 

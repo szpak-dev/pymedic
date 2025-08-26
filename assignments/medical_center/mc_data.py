@@ -21,7 +21,11 @@ def register_new_patient():
 
         while True:
             value = ask(key)
-            validate(key, value)
+
+            try:
+                validate(key, value)
+            except AssertionError as e:
+                print(str(e))
 
             if not value:
                 if is_optional(key):
