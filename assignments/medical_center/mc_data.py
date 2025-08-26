@@ -1,7 +1,7 @@
 import json
 
 from mc_generate_id import generate_id
-from mc_view import ask, new_to_old, old_to_new, is_optional
+from mc_view import ask, new_to_old, old_to_new, is_optional, validate
 
 
 with open('json.json', 'r') as file:
@@ -21,6 +21,7 @@ def register_new_patient():
 
         while True:
             value = ask(key)
+            validate(key, value)
 
             if not value:
                 if is_optional(key):
@@ -28,7 +29,7 @@ def register_new_patient():
                 else:
                     print('Field can not be empty. Try again.')
                     continue
-
+            
             if 'email' in key.lower() and '@' not in value:
                 print('Wrong email address. Try again.')
                 continue

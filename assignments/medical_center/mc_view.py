@@ -8,7 +8,29 @@ _labels = {
     'email': 'Email (optional)',
 }
 
+
+def _is_valid_email(email: str) -> bool:
+    return '@' in email
+
+
+def _is_valid_phone(phone: str) -> bool:
+    return phone.isdigit() and len(phone) == 9
+
+
+_validators = {
+    'email': _is_valid_email,
+    'phone': _is_valid_phone,
+}
+
+
 _optionals = ['email']
+
+
+def validate(key: str, value: str) -> bool:
+    try:
+        return _validators[key](value)
+    except KeyError:
+        return True
 
 
 def new_to_old(new_key: str) -> str:
