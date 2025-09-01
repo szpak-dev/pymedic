@@ -1,3 +1,5 @@
+from datetime import datetime
+
 _labels = {
     'first_name': 'First Name',
     'last_name': 'Last Name',
@@ -8,22 +10,53 @@ _labels = {
     'email': 'Email (optional)',
 }
 
+# Validate functions
+
+def _is_valid_name(name: str) -> bool:
+    return not any(char.isdigit() for char in name) and len(name) > 1
+
+def _is_valid_dob(dob: str) -> bool:
+    format = "%Y-%m-%d"
+    try:
+        return bool(datetime.strptime(dob, format))
+    except ValueError:
+        return False
+    
+def _is_valid_gender(gender: str) -> bool:
+    return gender.lower() == 'm' or gender.lower() == 'f' or gender.lower() == 'other'
 
 def _is_valid_email(email: str) -> bool:
     return '@' in email
 
+def _is_valid_phone(phone: str) -> bool:
+    return phone.isdigit() and len(phone) == 9
+
+# Assertions
+
+def _assert_valid_name(name: str):
+    assert _is_valid_name(name), 'Invalid name'
+
+def _assert_valid_dob(dob: str):
+    assert _is_valid_dob(dob), 'Invalid date format'
+
+def _assert_valid_gender(gender: str):
+    assert _is_valid_gender(gender), 'Invalid gender format'
 
 def _assert_valid_email(email: str):
     assert _is_valid_email(email), 'Invalid email'
 
+def _assert_valid_phone(phone: str):
+    assert _is_valid_phone(phone), 'Invalid phone number.'
 
-def _is_valid_phone(phone: str) -> bool:
-    return phone.isdigit() and len(phone) == 9
-
+# Dictionary of validators
 
 _validators = {
-    'email': _is_valid_email,
-    'phone': _is_valid_phone,
+    'first_name': _assert_valid_name,
+    'last_name': _assert_valid_name,
+    'dob': _assert_valid_dob,
+    'gender': _assert_valid_gender,
+    'email': _assert_valid_email,
+    'phone': _assert_valid_phone,
 }
 
 

@@ -22,30 +22,21 @@ def register_new_patient():
         while True:
             value = ask(key)
 
-            try:
-                validate(key, value)
-            except AssertionError as e:
-                print(str(e))
-
             if not value:
                 if is_optional(key):
                     break
                 else:
                     print('Field can not be empty. Try again.')
                     continue
-            
-            if 'email' in key.lower() and '@' not in value:
-                print('Wrong email address. Try again.')
-                continue
-            if 'phone' in key.lower():
-                value = value.strip()
-                if value.isdigit() and len(value) == 9:
-                    new_patient_dict[key] = value
-                    break
-                else:
-                    print('Wrong phone number. Try again.')
-                    continue
                 
+
+            try:
+                validate(key, value)
+            except AssertionError as e:
+                print(str(e))
+                continue
+
+            
             if value:
                 new_patient_dict[key] = value
                 break
