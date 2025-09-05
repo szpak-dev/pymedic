@@ -1,6 +1,6 @@
 import json
 
-from mc_data import patient_list, register_new_patient
+from mc_data import Patient, patient_list
 
 from mc_patient_list_menu import patient_list_menu
 
@@ -15,7 +15,7 @@ while True:
     choice_main = input('Enter your choice: ')
 
     if choice_main == '1': patient_list_menu()
-    if choice_main == '2': register_new_patient()
+    if choice_main == '2': Patient.create_new_patient()
     if choice_main == '3': continue
     if choice_main == '4': break
 

@@ -10,6 +10,7 @@ _labels = {
     'email': 'Email (optional)',
 }
 
+
 # Validate functions
 
 def _is_valid_name(name: str) -> bool:
@@ -31,6 +32,9 @@ def _is_valid_email(email: str) -> bool:
 def _is_valid_phone(phone: str) -> bool:
     return phone.isdigit() and len(phone) == 9
 
+def _is_valid_insurance(insurance: str) -> bool:
+    return True if insurance == True or insurance == False else False
+
 # Assertions
 
 def _assert_valid_name(name: str):
@@ -48,6 +52,9 @@ def _assert_valid_email(email: str):
 def _assert_valid_phone(phone: str):
     assert _is_valid_phone(phone), 'Invalid phone number.'
 
+def _assert_valid_insurance(insurance: bool):
+    assert _is_valid_insurance(insurance), 'Invalid insurance status.'
+
 # Dictionary of validators
 
 _validators = {
@@ -57,6 +64,7 @@ _validators = {
     'gender': _assert_valid_gender,
     'email': _assert_valid_email,
     'phone': _assert_valid_phone,
+    'insurance': _assert_valid_insurance,
 }
 
 

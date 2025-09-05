@@ -1,12 +1,76 @@
 import json
 
 from mc_generate_id import generate_id
-from mc_view import ask, new_to_old, old_to_new, is_optional, validate
+from mc_view import ask, new_to_old, old_to_new, is_optional, validate, _labels
 
+
+class Patient:
+    first_name: str
+    last_name: str
+    dob: str
+    gender: str
+    phone: str
+    email: str
+    insurance: bool
+    id: int
+
+    def __init__(self, first_name: str, last_name: str, dob: str, gender: str, phone: str, email: str, insurance: bool, id: int):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.dob = dob
+        self.gender = gender
+        self.phone = phone
+        self.email = email
+        self.insurance = insurance
+        self.id = id
+    
+    @classmethod
+    def create_new_patient(cls):
+        new_patient = {}
+        for parameter, label in _labels.items():
+            while True:
+                value = input(f'{label}: ')
+
+                if not value:
+                    if is_optional(parameter):
+                        break
+                    else:
+                        print('Field can not be empty. Try again.')
+                        continue
+
+                if is_bool(parameter):
+                    value = _bool_map.get(value, None)
+                
+
+                try:
+                    validate(parameter, value)
+                except AssertionError as e:
+                    print(str(e))
+                    continue
+
+            
+                if value is not None:
+                    new_patient[parameter] = value
+                    break
+
+            new_patient['id'] = generate_id()
+
+        return cls(**new_patient)
+
+            
+
+_bool_map = {
+    'yes': True, 'true': True, 'y': True, 't': True,
+    'no': False, 'false': False, 'n': False, 'f': False
+}
+
+_bools = ['insurance']
 
 with open('json.json', 'r') as file:
     patient_list = json.load(file)
 
+def is_bool(key):
+    return key in _bools
 
 def write_json(lista):
     with open('json.json', 'r+') as file:
@@ -14,32 +78,9 @@ def write_json(lista):
         json.dump(lista, file, indent=2)
         file.truncate()
 
+           
 
-def register_new_patient():
-    new_patient_dict = {'first_name': '', 'last_name': '', 'dob': '', 'gender': '', 'phone': '', 'email': '', 'insurance': ''}
-    for key in new_patient_dict:
-
-        while True:
-            value = ask(key)
-
-            if not value:
-                if is_optional(key):
-                    break
-                else:
-                    print('Field can not be empty. Try again.')
-                    continue
-                
-
-            try:
-                validate(key, value)
-            except AssertionError as e:
-                print(str(e))
-                continue
-
-            
-            if value:
-                new_patient_dict[key] = value
-                break
+   
 
     # transaltion between new and old keys            
     old_patient = {}
@@ -48,8 +89,7 @@ def register_new_patient():
         old_patient[old_key] = new_patient_dict[new_key]
 
     new_patient_dict = old_patient
-    new_patient_id = generate_id()
-    new_patient_dict['id'] = new_patient_id
+    
 
     if is_new_patient_unique(new_patient_dict):
         persist_patient(new_patient_dict)
@@ -64,13 +104,11 @@ def persist_patient(new_patient_dict: dict):
 
 
 def is_new_patient_unique(new_patient_dict: dict):
-    is_duplicated = False
     for i in patient_list:
         if new_patient_dict['First Name'] == i['First Name'] and new_patient_dict['Last Name'] == i['Last Name'] and new_patient_dict['Date of Birth (YYYY-MM-DD)'] == i['Date of Birth (YYYY-MM-DD)']:
-            is_duplicated = True
+            return False
         else:
-            is_duplicated = False
-    return is_duplicated
+            return True
 
 
 def delete_patient(id_for_deletion):
