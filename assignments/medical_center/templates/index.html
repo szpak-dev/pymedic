@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Medical Center</title>
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+                width: 25%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Medical Center</h1>
+        <h2>New patient</h2>
+        {{form_data}}
+        <form method="post" action="">
+            <input type="text" name="first_name" placeholder="First name" />
+            <input type="text" name="last_name" placeholder="Last name" />
+            <input type="text" name="gender" placeholder="Gender" />
+            <input type="text" name="dob" placeholder="DOB" />
+            <div>
+            <input type="checkbox" name="insurance" />
+            <label>Insurance</label>
+            </div>
+            <input type="submit" value="Add Patient" />
+        </form>
+    </body>
+</html>
