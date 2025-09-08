@@ -6,5 +6,5 @@
 
 ## 2. Run
 ```
-python.app
+python app
 ```
