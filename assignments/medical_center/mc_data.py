@@ -77,9 +77,6 @@ def write_json(lista):
         file.seek(0)
         json.dump(lista, file, indent=2)
         file.truncate()
-
-           
-
    
 
     # transaltion between new and old keys            

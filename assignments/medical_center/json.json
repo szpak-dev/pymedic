@@ -78,5 +78,11 @@
     "Email (optional)": "",
     "Insurance (yes/no)": false,
     "id": "10042"
+  },
+  {
+    "first_name": "Stefan",
+    "last_name": "Nowak",
+    "gender": "F",
+    "dob": "22-07-1980"
   }
 ]
