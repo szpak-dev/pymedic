@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect
-from mc_data import persist_patient
-
+from mc_data import validate_form, is_bool, _bool_map
+from mc_generate_id import generate_id
 
 app = Flask(__name__)
+
 
 
 @app.get("/")
@@ -10,17 +11,19 @@ def index():
     return render_template("index.html")
 
 
-@app.post("/new_patient")
+@app.post("/")
 def new_patient():
-    patient_form = request.form.to_dict()
-    persist_patient(patient_form)
-    return redirect("/")
-
-
-@app.post("/new_doctor")
-def new_doctor():
     form_data = request.form.to_dict()
-    return render_template("index.html", form_data=form_data)
+    form_data['id'] = generate_id()
+
+    form_errors = validate_form(form_data)
+
+    if not form_errors:
+        pass
+
+    return render_template("index.html", form_data=form_data, form_errors = form_errors)
+
+
 
 
 if __name__ == "__main__":

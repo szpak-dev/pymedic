@@ -8,7 +8,8 @@
                 flex-direction: column;
                 width: 25%;
             }
-            .error {color: red;}
+            .error {color: red;
+                    visibility: visible;}
             .form-row {display: flex; flex-direction: column;}
         </style>
     </head>
@@ -16,34 +17,49 @@
         <h1>Medical Center</h1>
         <h2>New patient</h2>
         {{form_data}}
+        {{form_errors}}
 
 
-        <form method="post" action="/new_patient">
+        <form method="post" action="">
             <div class="form-row">
+                <small class="error">{{form_errors['first_name'] if form_errors}}</small>
                 <input type="text" name="first_name" placeholder="First name" />
-                <small class="error">Invalid name</small>
             </div>
 
             <div class="form-row">
+                <small class="error">{{form_errors['last_name'] if form_errors}}</small>
                 <input type="text" name="last_name" placeholder="Last name" />
-                <small class="error">Invalid last name</small>
+                
             </div>
 
-            <input type="text" name="gender" placeholder="Gender" />
-            <input type="text" name="dob" placeholder="DOB" />
+            <div class="form-row">
+                <small class="error">{{form_errors['gender'] if form_errors}}</small>
+                <input type="text" name="gender" placeholder="Gender" />
+            </div>
+
+            <div class="form-row">
+                <small class="error">{{form_errors['dob'] if form_errors}}</small>
+                <input type="text" name="dob" placeholder="DOB" />
+            </div>
+
+            <div class="form-row">
+                <small class="error">{{form_errors['phone'] if form_errors}}</small>
+                <input type="text" name="phone" placeholder="Phone" />
+            </div>
+            <div class="form-row">
+                <small class="error">{{form_errors['email'] if form_errors}}</small>
+                <input type="text" name="email" placeholder="E-mail" />
+            </div>
+
             <div>
-            <input type="checkbox" name="insurance" />
-            <label>Insurance</label>
+                <small class="error">{{form_errors['insurance'] if form_errors}}</small>
+                <input type="checkbox" name="insurance" />
+                <label>Insurance</label>
             </div>
             <input type="submit" value="Add Patient" />
         </form>
 
-        <h2>New Doctor</h2>
-        <form method="post" action="/new_doctor">
-            <input type="text" name="first_doctor_name" placeholder="First name" />
-            <input type="text" name="last_doctor_name" placeholder="Last name" />
-            <input type="submit" value="Add Doctor" />
-        </form>
+
 
 
     </body>

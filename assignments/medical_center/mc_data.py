@@ -60,14 +60,40 @@ class Patient:
             
 
 _bool_map = {
-    'yes': True, 'true': True, 'y': True, 't': True,
-    'no': False, 'false': False, 'n': False, 'f': False
+    'yes': True, 'true': True, 'y': True, 't': True, 'on': True,
+    'no': False, 'false': False, 'n': False, 'f': False, '': False
 }
 
 _bools = ['insurance']
 
 with open('json.json', 'r') as file:
     patient_list = json.load(file)
+
+
+def validate_form(form_data):
+    # Empty Errors Dictionary
+    form_errors = {}
+
+    # Loop is checking and convering to bools
+    for key, value in form_data.items():
+        if is_bool(key):
+            form_data[key] = _bool_map.get(value, None)
+
+    #Loop validates and fills Errors Dictionary 
+    for key, value in form_data.items():
+        if not value:
+            if is_optional(key): continue
+
+            else:
+                form_errors[key] = 'Field can not be empty'
+        else:
+            try:
+                validate(key, value)
+            except AssertionError as e:
+                form_errors[key] = str(e)
+    return form_errors
+
+
 
 def is_bool(key):
     return key in _bools

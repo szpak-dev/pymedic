@@ -84,5 +84,12 @@
     "last_name": "Nowak",
     "gender": "F",
     "dob": "22-07-1980"
+  },
+  {
+    "first_name": "\u0141ukasz",
+    "last_name": "Mackiewicz",
+    "gender": "M",
+    "dob": "1990-03-01",
+    "insurance": "on"
   }
 ]
